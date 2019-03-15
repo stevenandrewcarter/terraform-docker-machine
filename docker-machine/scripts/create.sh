@@ -62,9 +62,3 @@ while [ $# -gt 0 ]; do
   shift
 done
 $cmd
-touch ${PWD}/created_machines
-docker-machine ip $name > ${PWD}/created_machines
-
-# Create an emtpy file for the swarm manager ip
-rm -f swarm_manager
-touch ${PWD}/swarm_manager

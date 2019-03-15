@@ -48,8 +48,7 @@ resource "null_resource" "create" {
   }
 }
 
-data "local_file" "docker_machine_ips" {  
-  depends_on = ["null_resource.create"]
-  filename = "${path.module}/scripts/created_machines"
+data "external" "docker_machine_ips" {
+  program = ["docker-machine", "ip", "$(docker-machine ls -q)"]  
+  depends_on = ["null_resource.swarm-manager"]
 }
-

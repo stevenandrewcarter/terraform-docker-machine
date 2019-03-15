@@ -25,8 +25,7 @@ resource "null_resource" "swarm-manager" {
   }
 }
 
-data "local_file" "swarm_manager_ip" {
-  count = "${var.swarm_manager != "" ? 1 : 0}"
+data "external" "swarm_manager_ip" {
+  program = ["docker-machine", "ls --filter NAME=${var.swarm_manager} -f {{.URL}}"]  
   depends_on = ["null_resource.swarm-manager"]
-  filename = "${path.module}/scripts/swarm_manager"
 }

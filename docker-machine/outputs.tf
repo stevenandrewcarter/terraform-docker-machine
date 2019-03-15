@@ -1,13 +1,13 @@
 output "swarm_manager_name" {  
-  depends_on = ["${data.local_file.swarm_manager_ip}"]
-  value = "${chomp(var.swarm_manager)}"
+  depends_on = ["${data.external.swarm_manager_ip}"]
+  value = "${chomp(data.external.swarm_manager_ip.result)}"
 }
 
 output "swarm_manager_host_ip" {  
-  depends_on = ["${data.local_file.swarm_manager_ip}"]
-  value = "${chomp(data.local_file.swarm_manager_ip.0.content)}"
+  value = "${chomp(data.external.swarm_manager_ip.result)}"
+  depends_on = ["${data.external.swarm_manager_ip}"]
 }
 
 output "machine_ips" {
-  value = "${data.local_file.docker_machine_ips.content}"
+  value = "${data.external.docker_machine_ips.result}"
 }
