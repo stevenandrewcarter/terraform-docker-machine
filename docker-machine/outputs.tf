@@ -8,6 +8,6 @@ output "swarm_manager_host_ip" {
   value = "${chomp(data.local_file.swarm_manager_ip.0.content)}"
 }
 
-output "machines" {
-  value = "${var.machines}"
+output "machine_ips" {
+  value = "${data.local_file.docker_machine_ips.content}"
 }
