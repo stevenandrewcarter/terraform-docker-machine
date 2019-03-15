@@ -49,6 +49,6 @@ resource "null_resource" "create" {
 }
 
 data "external" "docker_machine_ips" {
-  program = ["docker-machine", "ip", "$(docker-machine ls -q)"]  
+  program = ["docker-machine ip $(docker-machine ls -q)"]  
   depends_on = ["null_resource.swarm-manager"]
 }
