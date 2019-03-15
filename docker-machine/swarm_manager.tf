@@ -26,6 +26,9 @@ resource "null_resource" "swarm-manager" {
 }
 
 data "external" "swarm_manager_ip" {
-  program = ["docker-machine ls --filter NAME=${var.swarm_manager} -f {{.URL}}"]  
+  program = ["${path.module}/data_sources/get_swarm_manager.sh"]
   depends_on = ["null_resource.swarm-manager"]
+  query = {
+    host = "${var.swarm_manager}"
+  }
 }
