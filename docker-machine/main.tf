@@ -47,3 +47,9 @@ resource "null_resource" "create" {
     command = "docker-machine rm -y ${element(var.machines, count.index)}"
   }
 }
+
+data "local_file" "docker-machine-ips" {  
+  depends_on = ["null_resource.create"]
+  filename = "${path.module}/scripts/created_machines"
+}
+

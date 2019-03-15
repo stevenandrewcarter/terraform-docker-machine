@@ -1,6 +1,7 @@
 #!/bin/bash
 # Creates a Docker-Machine based on the given parameters
 cmd="docker-machine create"
+name=""
 while [ $# -gt 0 ]; do
   case "$1" in
     --driver=*)
@@ -49,6 +50,7 @@ while [ $# -gt 0 ]; do
       if [ ! "${1#*=}" = "" ]
       then
         cmd+=" ${1#*=}"
+        name="${1#*=}"
       fi
       ;;       
     *)
@@ -60,6 +62,9 @@ while [ $# -gt 0 ]; do
   shift
 done
 $cmd
+touch ${PWD}/created_machines
+docker-machine ip $name > ${PWD}/created_machines
+
 # Create an emtpy file for the swarm manager ip
 rm -f swarm_manager
 touch ${PWD}/swarm_manager
