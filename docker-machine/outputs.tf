@@ -1,6 +1,5 @@
 output "swarm_manager_host_url" {  
-  value = "${chomp(data.external.swarm_manager_ip.result["url"])}"
-  depends_on = ["${data.external.swarm_manager_ip}"]
+  value = "${chomp(data.external.swarm_manager_ip.result["url"])}"  
 }
 
 output "machine_ips" {
