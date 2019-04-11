@@ -41,7 +41,8 @@ proxy settings or adjusting the Docker Engine settings.
 ## Issues
 
 At the current version of terraform (0.11.x), you will get errors with the output when trying to destroy a docker-machine
-cluster. I have been looking into work arounds to try and remove this error.
+cluster. I have been looking into work arounds to try and remove this error. The current solution is to add the environment
+variable as [issue](https://github.com/hashicorp/terraform/issues/18197) recommends.
 
 Also making changes will force the entire cluster to be rebuilt, which is obviously a bad thing if you have any sort of
 persistence on the cluster. I would not recommend running *Production* workloads using this solution.
