@@ -1,4 +1,5 @@
 variable "manager" {
-  type = "list"
-  default = ["manager"]  
+  type    = list(string)
+  default = ["manager"]
 }
+
