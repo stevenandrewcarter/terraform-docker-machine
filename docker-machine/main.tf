@@ -26,7 +26,7 @@ resource "null_resource" "create" {
       --NO_PROXY=${var.no_proxy}  \
       --engine-insecure-registry=${var.insecure_registries} \
       --name=${element(var.machines, count.index)}
-    
+
 EOF
     working_dir = "${path.module}/scripts"
   }
@@ -57,4 +57,3 @@ data "external" "docker_machine_ips" {
     machine = var.machines[count.index]
   }
 }
-

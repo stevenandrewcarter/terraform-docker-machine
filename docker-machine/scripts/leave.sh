@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-docker-machine ssh $1 "docker swarm leave --force"
+docker-machine ssh "$1" "docker swarm leave --force"
